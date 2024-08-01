@@ -17,6 +17,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ message: "Server is running" });
+});
+
 app.use("/api/v1", rootRouter);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
