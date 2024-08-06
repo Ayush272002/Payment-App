@@ -34,6 +34,7 @@ const Signin = () => {
 
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
+        toast.success("Login successful.");
         navigate("/dashboard");
       } else {
         toast.error("Login failed. Please try again.");

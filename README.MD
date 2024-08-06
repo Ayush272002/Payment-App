@@ -11,14 +11,43 @@ Password - Test@1234
 ---
 Note - The server is deployed on free tier so it might take time to get responses from the server when you test this application. Or if you want to run it locally then follow the instructions below. 
 
-There is a docker file to run mongo db locally
-
 - Clone the repository
 ```shell
 git clone https://github.com/Ayush272002/Payment-App
 ```
 
-## Running the backend
+There is a docker file to easily run the project easily
+
+Steps to do that 
+
+- Backend <br>
+Run the following command from the project root directory. 
+Fill in the .env file first
+```shell
+cd backend
+docker build -t payment-app-backend .
+docker run -d -p 8000:8000 payment-app-backend
+```
+
+- Frontend <br>
+Run the following command from the project root directory
+In the .env file the put this as the base URL 
+```
+VITE_API_BASE_URL = http://localhost:8000
+```
+
+```shell
+cd frontend
+docker build -t payment-app-frontend .
+docker run -d -p 5173:5173 payment-app-frontend
+```
+
+- Go to `http://localhost:5173` on your browser <br>
+The project would have been hosted there
+------
+## Running without docker
+
+### Running the backend
 Fill the necessary fields in the .env file and then do the following
 
 ```shell
@@ -27,7 +56,7 @@ npm i
 npm start
 ```
 
-## Running the frontend
+### Running the frontend
 Fill the necessary fields (the backend url) in the .env file and then do the following
 
 ```shell
