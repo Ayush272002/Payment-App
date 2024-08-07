@@ -22,28 +22,26 @@ Steps to do that
 
 - Backend <br>
 Run the following command from the project root directory. 
-Fill in the .env file first
+
 ```shell
-cd backend
-docker build -t payment-app-backend .
-docker run -d -p 8000:8000 payment-app-backend
-```
+docker pull ayush27002/payment-app:backend
+docker run -e MONGODB_URL=<your_mongo_url> -e PORT=8000 -e JWT_SECRET=<jwt_pass> -d -p 8000:8000 ayush27002/payment-app:backend
 
 - Frontend <br>
 Run the following command from the project root directory
-In the .env file the put this as the base URL 
-```
-VITE_API_BASE_URL = http://localhost:8000
-```
 
 ```shell
-cd frontend
-docker build -t payment-app-frontend .
-docker run -d -p 5173:5173 payment-app-frontend
+docker pull ayush27002/payment-app:frontend
+docker run -e VITE_API_BASE_URL=http://localhost:8000⁠ -d -p 5173:5173 ayush27002/payment-app:frontend
 ```
 
+For more info on the docker image visit [here](https://hub.docker.com/repository/docker/ayush27002/payment-app/general)
+
 - Go to `http://localhost:5173` on your browser <br>
-The project would have been hosted there
+The project would have been hosted there 
+
+***Imp -> Why Do I dont need to use networks and the frontend and backend run without networks <br><br>
+Ans -> In a web application running in a browser, localhost always refers to the machine running the browser, not the container. so it makes request to localhost which is the machine and not the container anymore***
 ------
 ## Running without docker
 

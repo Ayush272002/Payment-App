@@ -2,9 +2,11 @@ FROM node:20.16.0-slim
 
 WORKDIR /app
 
-COPY . .
+COPY package* .
 
 RUN npm install
+
+COPY . .
 
 EXPOSE 8000
 
