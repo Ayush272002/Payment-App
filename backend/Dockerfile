@@ -1,6 +1,6 @@
 FROM node:20.16.0-slim
 
-WORKDIR /app
+WORKDIR /app/backend
 
 COPY package* .
 
